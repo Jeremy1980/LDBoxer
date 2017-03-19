@@ -11,9 +11,10 @@ Created on 16 mar 2017
 
 import os
 import sys
+from macpath import dirname
 
 __appname__ = "LDBoxer"
-__version__ = "2017a"
+__version__ = "2017b"
 
 NOTFOUND_MSG = "FileNotFoundError: [Errno 2] No such file or directory: '%s'"
 INVALIDACCESS_MSG = "ImportError: Invalid access to %s."
@@ -456,11 +457,24 @@ if __name__ == '__main__':
         
         print
         print "Boxed %d parts" % REPLACEDTOTAL_COUNT
+                
+        if REPLACEDTOTAL_COUNT>0 :       
         
-        if REPLACEDTOTAL_COUNT>0 :
         # 0 !LDOXER LEVEL info should also be automatically updated!
             CHKLST_INFILE.append("0 // Boxed Total {0} parts by {1} v{2}.".format(REPLACEDTOTAL_COUNT ,__name__ ,__version__))
             CHKLST_INFILE.append("0")
+
+            try:
+                dirname = os.path.dirname(MODELPATH)
+                basename = "boxed_" + os.path.basename(MODELPATH)
+                with open(os.path.join(dirname,basename) ,"wb") as f:
+                    for line in CHKLST_INFILE:
+                        f.write(line)
+                    f.close()
+            except Exception, ex:
+                print ex.message
+            else:
+                print "Saved {0} in {1}".format(basename ,dirname)     
         
     
     
