@@ -1,0 +1,23 @@
+0 Brick  1 x 10 without Top Studs
+0 Name: B\T4477.dat
+0 Author: LDraw Box Creator v 0.01 by Tore Eriksson
+
+0 BFC CERTIFY CCW
+
+1 16  -80 4 0  1 0 0  0 -1 0  0 0 1  stud3.dat
+1 16  -60 4 0  1 0 0  0 -1 0  0 0 1  stud3.dat
+1 16  -40 4 0  1 0 0  0 -1 0  0 0 1  stud3.dat
+1 16  -20 4 0  1 0 0  0 -1 0  0 0 1  stud3.dat
+1 16  0 4 0  1 0 0  0 -1 0  0 0 1  stud3.dat
+1 16  20 4 0  1 0 0  0 -1 0  0 0 1  stud3.dat
+1 16  40 4 0  1 0 0  0 -1 0  0 0 1  stud3.dat
+1 16  60 4 0  1 0 0  0 -1 0  0 0 1  stud3.dat
+1 16  80 4 0  1 0 0  0 -1 0  0 0 1  stud3.dat
+1 16  0 8 0  100 0 0  0 -8 0  0 0 10  box5.dat
+0 BFC INVERTNEXT
+1 16  0 8 0  96 0 0  0 -4 0  0 0 6  box5.dat
+4 16  100 8 10  96 8 6  -96 8 6  -100 8 10
+4 16  -100 8 10  -96 8 6  -96 8 -6  -100 8 -10
+4 16  -100 8 -10  -96 8 -6  96 8 -6  100 8 -10
+4 16  100 8 -10  96 8 -6  96 8 6  100 8 10
+0

@@ -1,0 +1,16 @@
+0 Brick  2 x  3 without Top Studs
+0 Name: B\T3002.dat
+0 Author: LDraw Box Creator v 0.01 by Tore Eriksson
+
+0 BFC CERTIFY CCW
+
+1 16  -10 4 0  1 0 0  0 -5 0  0 0 1  stud4.dat
+1 16  10 4 0  1 0 0  0 -5 0  0 0 1  stud4.dat
+1 16  0 24 0  30 0 0  0 -24 0  0 0 20  box5.dat
+0 BFC INVERTNEXT
+1 16  0 24 0  26 0 0  0 -20 0  0 0 16  box5.dat
+4 16  30 24 20  26 24 16  -26 24 16  -30 24 20
+4 16  -30 24 20  -26 24 16  -26 24 -16  -30 24 -20
+4 16  -30 24 -20  -26 24 -16  26 24 -16  30 24 -20
+4 16  30 24 -20  26 24 -16  26 24 16  30 24 20
+0
