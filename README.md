@@ -22,5 +22,5 @@ There is also an optional `-v` parameter which will print verbose information to
 1. Boxed parts need to go in the "LDraw\parts\b" folder. Boxed primitives need to go in the "LDraw\parts\b\s" folder. Create these folders if they don't exist already.
 1. Copy the Tore Eriksson's original boxed parts (inside the "boxes\b_tore" directory) into "LDraw\parts\b" first; then copy the newer boxed parts (in the "boxes\b_new" directory) into the same folder, replacing files when prompted to.
 1. Many "top" and "bottom" versions of boxed parts are missing, and still need to be created. Still, most of the important ones have already been made.
-1. I may have removed edge lines from several parts before I realized that that is not a good thing to do. I can't remember which parts I did this to, unfortunately.
-1. I use "boxes_checklist.xlsx" to keep track of all the boxed parts.
+1. I may have removed edge lines from several parts before I realized that that is not a good thing to do. I can't remember which parts I did this to, unfortunately. - MJH
+1. The spreadsheet "boxes_checklist.xlsx" is used to keep track of all the boxed parts.
