@@ -19,8 +19,8 @@ There is also an optional `-v` parameter which will print verbose information to
 
 # Boxed Parts
 
-1. Extract this archive and copy the contents of the "LDBoxer\boxes\parts" folder into your "LDraw\parts" folder, replacing and overwriting files when prompted to.
+1. Extract this archive and copy the contents of the "LDBoxer\boxes\parts" folder into your "LDraw\parts" folder, replacing and overwriting files when prompted.
 1. Boxed parts need to go in the "LDraw\parts\b" folder. Boxed sub-parts need to go in the "LDraw\parts\s\b" folder.
-1. Many "top" and "bottom" versions of boxed parts are missing, and still need to be created. Still, most of the important ones are done.
+1. Many "top" and "bottom" versions of boxed parts are missing, and still need to be created. Still, most of the important parts are finished.
 1. The spreadsheet "boxes_checklist.xlsx" is used to keep track of all the boxed parts.
 1. LDBoxer currently cannot process any SNOT parts. Limited handling of SNOT parts may be added in the future.
