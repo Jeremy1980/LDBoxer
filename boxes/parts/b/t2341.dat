@@ -1,0 +1,38 @@
+0 Slope Brick 45  3 x  1 Inverted Double without Inner Stopper Rings
+0 Name: t2341.dat
+0 Author: James Jessiman
+0 !LDRAW_ORG Part UPDATE 2016-01
+0 !LICENSE Redistributable under CCAL version 2.0 : see CAreadme.txt
+
+0 ROTATION CENTER 0 0 0 1 "Custom" 
+0 ROTATION CONFIG 0 0
+0 BFC CERTIFY CW
+
+0 !HISTORY 2002-09-13 [izanette] Modified with WINDZ for BFC compliance
+0 !HISTORY 2003-12-19 [PTadmin] Official Update 2003-03
+0 !HISTORY 2004-03-02 [PTadmin] Official Update 2004-01
+0 !HISTORY 2007-05-12 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2008-10-11 [mkennedy] Made use of stud2s and more box and rect primitives
+0 !HISTORY 2009-12-29 [PTadmin] Official Update 2009-03
+0 !HISTORY 2016-01-15 [cwdee] Qualify description
+0 !HISTORY 2016-12-31 [PTadmin] Official Update 2016-01
+
+0 BFC INVERTNEXT
+1 16 0 24 0 6 0 0 0 -20 0 0 0 6 box5.dat
+1 16 0 0 0 10 0 0 0 4 0 0 0 30 box4o4a.dat
+1 16 0 14 20 10 0 0 0 -1 -10 0 0 10 rect.dat
+1 16 0 14 -20 10 0 0 0 -1 10 0 0 10 rect.dat
+4 16 -10 24 10 -6 24 6 6 24 6 10 24 10
+4 16 -10 24 -10 -6 24 -6 -6 24 6 -10 24 10
+4 16 10 24 -10 6 24 -6 -6 24 -6 -10 24 -10
+4 16 10 24 10 6 24 6 6 24 -6 10 24 -10
+0 
+2 24 10 24 -10 10 24 10
+2 24 -10 24 -10 -10 24 10
+0 
+4 16 10 4 -30 10 4 30 10 24 10 10 24 -10
+4 16 -10 24 10 -10 4 30 -10 4 -30 -10 24 -10
+0 
+4 16 10 0 -30 -10 0 -30 -10 0 30 10 0 30
+0

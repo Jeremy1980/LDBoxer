@@ -1,0 +1,5 @@
+0 ROTATION CENTER 0 0 0 1 "Custom" 
+0 ROTATION CONFIG 0 0
+1 16 0 4 0 30 0 0 0 4 0 0 0 30 box.dat
+1 16 0 0 0 1 0 0 0 1 0 0 0 1 stug-3x3.dat
+0

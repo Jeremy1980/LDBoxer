@@ -1,11 +1,11 @@
 '''
 Created on 16 mar 2017
-Updated on 28 jan 2018
+Updated on 02 feb 2018
 @author: Tore Eriksson <tore.eriksson@mbox325.swipnet.se>
 @author: Jeremy Czajkowski
 @author: Michael Horvath
 @license: GNU General Public License version 3
-@version: 2018f
+@version: 2018g
 @note: A utility to help you replace LDraw parts with no visible studs or tubes with boxes. 
        Saves rendering time and CPU power.
        Note that this script is volatile! If your model already contains boxed parts, they will be deleted!
@@ -21,14 +21,14 @@ import time
 from macpath import dirname
 
 __appname__ = "LDBoxer"
-__version__ = "2018f"
+__version__ = "2018g"
 
 NOTFOUND_MSG = "FileNotFoundError: [Errno 2] No such file or directory: '%s'"
 INVALIDACCESS_MSG = "ImportError: Invalid access to %s."
 
 CHKLST_INFILE = []
 CHKLST_INTYPE = []
-STR_PREFIXES = ['none', 'B\\T', 'B\\B', 'B\\']
+STR_PREFIXES = ['none', 'b\\t', 'b\\b', 'b\\a']
 
 LDRAWPATH = MODELPATH = ''
 VERBOSE = False
@@ -201,8 +201,8 @@ if __name__ == '__main__':
                 fil = fil[3:]
             elif fil[0:3].upper() == STR_PREFIXES[2]:
                 fil = fil[3:]
-            elif fil[0:2].upper() == STR_PREFIXES[3]:
-                fil = fil[2:]
+            elif fil[0:3].upper() == STR_PREFIXES[3]:
+                fil = fil[3:]
             
             ldline = ldLineUpdate(ldline, 15, fil)
             CHKLST_INFILE[i] = ldline
@@ -214,7 +214,7 @@ if __name__ == '__main__':
             
             if len(fil)<5: continue # just to be foolproof...
             fil = fil[0:(len(fil)-4)]
-            fil = os.path.join(LDRAWPATH, 'Parts', 'B', fil + '.nfo')
+            fil = os.path.join(LDRAWPATH, 'parts', 'b', fil + '.nfo')
             if not os.path.exists(fil): continue
             
             x1 = float(ldExtractFromLine(ldline, 3))
@@ -294,11 +294,8 @@ if __name__ == '__main__':
                 
                 if len(fil)<5: continue
                 fil = fil[0:(len(fil)-4)]
-                fil = os.path.join(LDRAWPATH, 'Parts', 'B', fil + '.dat')
-                if not os.path.exists(fil): continue
-                fil = fil[0:(len(fil)-4)]
-                fil = fil + '.nfo'
-                if not os.path.exists(fil): continue
+                filnfo = os.path.join(LDRAWPATH, 'parts', 'b', fil + '.nfo')
+                if not os.path.exists(filnfo): continue
                 
                 x1 = float(ldExtractFromLine(ldline, 3))
                 y1 = float(ldExtractFromLine(ldline, 4))
@@ -310,13 +307,13 @@ if __name__ == '__main__':
                 
                 NFOCONTENT = []
                 try:
-                    with open(fil, "r") as f:
+                    with open(filnfo, "r") as f:
                         for line in f:
                             NFOCONTENT.append(line)
                         f.close()
                 except:
                     NFOCONTENT = []
-                    print INVALIDACCESS_MSG % fil
+                    print INVALIDACCESS_MSG % filnfo
                 
                 StrListInfil = []
                 StrListInfil.extend(NFOCONTENT)
