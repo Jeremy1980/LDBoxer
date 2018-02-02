@@ -19,8 +19,8 @@ There is also an optional `-v` parameter which will print verbose information to
 
 # Boxed Parts
 
+1. Extract this archive and copy the "LDBoxer\boxes\parts" folder into your "LDraw" folder, replacing and overwriting folders and files when prompted to.
 1. Boxed parts need to go in the "LDraw\parts\b" folder. Boxed sub-parts need to go in the "LDraw\parts\s\b" folder.
-1. Extract this archive and copy the "parts" folder into your "LDraw" folder, replacing and overwriting folders and files when prompted to.
 1. Many "top" and "bottom" versions of boxed parts are missing, and still need to be created. Still, most of the important ones are done.
 1. I may have removed edge lines from several parts before I realized that that is not a good thing to do. I can't remember which parts I did this to, unfortunately. - MJH
 1. The spreadsheet "boxes_checklist.xlsx" is used to keep track of all the boxed parts.
