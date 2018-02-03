@@ -1,0 +1,31 @@
+0 Brick  1 x  3 x  5
+0 Name: b3755.dat
+0 Author: James Jessiman
+0 !LDRAW_ORG Part UPDATE 2005-01
+0 !LICENSE Redistributable under CCAL version 2.0 : see CAreadme.txt
+
+0 ROTATION CENTER 0 0 0 1 "Custom" 
+0 ROTATION CONFIG 0 0
+0 BFC CERTIFY CCW
+
+0 !HISTORY 1998-07-15 [PTadmin] Official Update 1998-07
+0 !HISTORY 2004-11-15 [mikeheide] Made BFC Compliant
+0 !HISTORY 2005-12-28 [PTadmin] Official Update 2005-01
+0 !HISTORY 2007-06-29 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+4 16 -30 120 10 30 120 10 30 120 -10 -30 120 -10
+1 16 0 0 0 30 0 0 0 120 0 0 0 10 box4.dat
+1 16 20 0 0 6 0 0 0 1 0 0 0 6 4-4edge.dat
+1 16 -20 0 0 6 0 0 0 1 0 0 0 6 4-4edge.dat
+1 16 20 0 0 6 0 0 0 1 0 0 0 6 4-4ndis.dat
+1 16 -20 0 0 6 0 0 0 1 0 0 0 6 4-4ndis.dat
+4 16 -30 0 10 -26 0 6 26 0 6 30 0 10
+4 16 -30 0 -10 -26 0 -6 -26 0 6 -30 0 10
+4 16 30 0 -10 26 0 -6 -26 0 -6 -30 0 -10
+4 16 30 0 10 26 0 6 26 0 -6 30 0 -10
+4 16 14 0 6 -14 0 6 -14 0 -6 14 0 -6
+1 16 20 0 0 1 0 0 0 1 0 0 0 1 stud2a.dat
+1 16 0 0 0 1 0 0 0 1 0 0 0 1 stud2.dat
+1 16 -20 0 0 1 0 0 0 1 0 0 0 1 stud2a.dat
+0

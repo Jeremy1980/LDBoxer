@@ -5,7 +5,7 @@ Updated on 02 feb 2018
 @author: Jeremy Czajkowski
 @author: Michael Horvath
 @license: GNU General Public License version 3
-@version: 2018g
+@version: 2018h
 @note: A utility to help you replace LDraw parts with no visible studs or tubes with boxes. 
        Saves rendering time and CPU power.
        Note that this script is volatile! If your model already contains boxed parts, they will be deleted!
@@ -214,8 +214,8 @@ if __name__ == '__main__':
             
             if len(fil)<5: continue # just to be foolproof...
             fil = fil[0:(len(fil)-4)]
-            fil = os.path.join(LDRAWPATH, 'parts', 'b', fil + '.nfo')
-            if not os.path.exists(fil): continue
+            filnfo = os.path.join(LDRAWPATH, 'parts', 'b', fil + '.nfo')
+            if not os.path.exists(filnfo): continue
             
             x1 = float(ldExtractFromLine(ldline, 3))
             y1 = float(ldExtractFromLine(ldline, 4))
@@ -227,13 +227,13 @@ if __name__ == '__main__':
             
             NFOCONTENT = []
             try:
-                with open(fil, "r") as f:
+                with open(filnfo, "r") as f:
                     for line in f:
                         NFOCONTENT.append(line)
                     f.close()
             except:
                 NFOCONTENT = []
-                print INVALIDACCESS_MSG % fil
+                print INVALIDACCESS_MSG % filnfo
             
             StrListInfil = []
             StrListInfil.extend(NFOCONTENT)

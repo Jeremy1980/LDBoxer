@@ -1,5 +1,5 @@
 0 Brick  1 x  1 Round without Groove
-0 Name: au9026.dat
+0 Name: bu9026.dat
 0 Author: Tore Eriksson [Tore_Eriksson]
 0 !LDRAW_ORG Part UPDATE 2010-02
 0 !LICENSE Redistributable under CCAL version 2.0 : see CAreadme.txt
@@ -16,9 +16,9 @@
 0 !HISTORY 2010-07-05 [PTadmin] Official Update 2010-02
 
 1 16 0 0 0 10 0 0 0 24 0 0 0 10 4-4cyli.dat
-1 16 0 24 0 10 0 0 0 1 0 0 0 10 4-4edge.dat
 1 16 0 0 0 10 0 0 0 1 0 0 0 10 4-4edge.dat
 1 16 0 0 0 10 0 0 0 1 0 0 0 10 4-4disc.dat
 1 16 0 24 0 10 0 0 0 1 0 0 0 10 4-4disc.dat
 0 
+1 16 0 0 0 1 0 0 0 1 0 0 0 1 stud.dat
 0

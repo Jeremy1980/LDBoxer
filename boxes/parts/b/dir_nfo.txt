@@ -33,6 +33,8 @@
 2449.nfo
 2450.nfo
 2453.nfo
+2453a.nfo
+2453b.nfo
 2454.nfo
 2455.nfo
 2456.nfo
