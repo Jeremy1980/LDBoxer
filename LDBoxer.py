@@ -1,7 +1,7 @@
 '''
 Created on 16 mar 2017
 Updated on 02 feb 2018
-@author: Tore Eriksson <tore.eriksson@mbox325.swipnet.se>
+@author: Tore Eriksson <tore.eson@gmail.com>
 @author: Jeremy Czajkowski
 @author: Michael Horvath
 @license: GNU General Public License version 3
