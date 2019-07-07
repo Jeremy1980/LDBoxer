@@ -24,4 +24,8 @@ There is also an optional `-v` parameter which will print verbose information to
 1. Many "top" and "bottom" versions of boxed parts are missing, and still need to be created. Still, most of the important parts are finished.
 1. The spreadsheet "boxes_checklist.xlsx" is used to keep track of all the boxed parts.
 1. LDBoxer currently cannot process any SNOT parts. Limited handling of SNOT parts may be added in the future.
-1. Note that many boxed parts still have incorrect or missing back face culling (BFC) information, and need to be fixed/updated. They throw quite a few other errors in LDView, too.
+
+# To Do
+
+1. Many boxed parts still have incorrect or missing back face culling (BFC) information, and need to be fixed/updated.
+1. Need to create LGEO equivalents of all the boxed parts.

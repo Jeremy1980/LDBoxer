@@ -21,7 +21,7 @@ import time
 from macpath import dirname
 
 __appname__ = "LDBoxer"
-__version__ = "2018g"
+__version__ = "2018h"
 
 NOTFOUND_MSG = "FileNotFoundError: [Errno 2] No such file or directory: '%s'"
 INVALIDACCESS_MSG = "ImportError: Invalid access to %s."
