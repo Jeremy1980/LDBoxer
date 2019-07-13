@@ -28,5 +28,5 @@ There is also an optional `-v` parameter which will print verbose information to
 
 1. Many boxed parts still have incorrect or missing back face culling (BFC) information, and need to be fixed/updated.
 1. Need to create LGEO equivalents of all the boxed parts. However, I'm not sure how LDBoxer's sub-folder structure will work in this context. We'll see.
-1. Need to start adhering to [official parts header specifications](https://www.ldraw.org/article/398.html).
+1. Need to start adhering better to [official parts header specifications](https://www.ldraw.org/article/398.html).
 1. LDBoxer currently cannot process any SNOT parts. Limited handling of SNOT parts may be possible in the future.
