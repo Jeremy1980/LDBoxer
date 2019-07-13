@@ -23,10 +23,10 @@ There is also an optional `-v` parameter which will print verbose information to
 1. Boxed parts need to go in the "LDraw\parts\b" folder. Boxed sub-parts need to go in the "LDraw\parts\s\b" folder.
 1. Many "top" and "bottom" versions of boxed parts are missing, and still need to be created. Still, most of the important parts are finished.
 1. The spreadsheet "boxes_checklist.xlsx" is used to keep track of all the boxed parts.
-1. LDBoxer currently cannot process any SNOT parts. Limited handling of SNOT parts may be added in the future.
 
 # To Do
 
 1. Many boxed parts still have incorrect or missing back face culling (BFC) information, and need to be fixed/updated.
-1. Need to create LGEO equivalents of all the boxed parts. However, I'm not sure how LDBoxer's sub-folder structure will work in this context.
+1. Need to create LGEO equivalents of all the boxed parts. However, I'm not sure how LDBoxer's sub-folder structure will work in this context. We'll see.
 1. Need to start adhering to [official parts header specifications](https://www.ldraw.org/article/398.html).
+1. LDBoxer currently cannot process any SNOT parts. Limited handling of SNOT parts may be added in the future.
