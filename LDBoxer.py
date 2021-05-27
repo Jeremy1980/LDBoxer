@@ -1,17 +1,17 @@
 '''
 Created on 16 mar 2017
-Updated on 02 feb 2018
+Updated on 27 may 2021
 @author: Tore Eriksson <tore.eson@gmail.com>
 @author: Jeremy Czajkowski
 @author: Michael Horvath
 @license: GNU General Public License version 3
-@version: 2018h
+@version: 2018i
 @note: A utility to help you replace LDraw parts with no visible studs or tubes with boxes. 
        Saves rendering time and CPU power.
        Note that this script is volatile! If your model already contains boxed parts, they will be deleted!
-       This script will fail on four letter file extansions, such as "xmpd" used by MPDCenter.
        If you add a third "-v" command-line option, the program will display more verbose output useful for debugging.
        I recommend using PyPy to run the script instead of CPython. The speed is much much improved!
+       I recommend not using this script on MPD or XMPD models for the time being until the script properly handles such file types.
 '''
 
 import os
@@ -21,7 +21,7 @@ import time
 from macpath import dirname
 
 __appname__ = "LDBoxer"
-__version__ = "2018h"
+__version__ = "2018i"
 
 NOTFOUND_MSG = "FileNotFoundError: [Errno 2] No such file or directory: '%s'"
 INVALIDACCESS_MSG = "ImportError: Invalid access to %s."
@@ -124,26 +124,24 @@ def ldFloatToLDraw(inval):
 
 if __name__ == '__main__':
     if sys.argv.__len__() < 3 or sys.argv.__len__() > 4:
-        print "Invalid arguments"
+        print("Invalid arguments")
         sys.exit(2)
-    elif sys.argv.__len__() == 3:
-        LDRAWPATH = sys.argv[1]
-        MODELPATH = sys.argv[2]
     elif sys.argv.__len__() == 4:
         if sys.argv[3] == "-v":
             VERBOSE = True
         else:
-            print "Invalid arguments"
+            print("Invalid arguments")
             sys.exit(2)
-        LDRAWPATH = sys.argv[1]
-        MODELPATH = sys.argv[2]
+
+    LDRAWPATH = sys.argv[1]
+    MODELPATH = sys.argv[2]
     
     if not os.path.isdir(LDRAWPATH):
-        print NOTFOUND_MSG % LDRAWPATH
+        print(NOTFOUND_MSG % LDRAWPATH)
         sys.exit(2)
         
     if not os.path.isfile(MODELPATH):
-        print NOTFOUND_MSG % MODELPATH
+        print(NOTFOUND_MSG % MODELPATH)
         sys.exit(2)
     
     try:
@@ -155,11 +153,11 @@ if __name__ == '__main__':
     except:
         CHKLST_INFILE = []
         CHKLST_INTYPE = []
-        print INVALIDACCESS_MSG % MODELPATH
+        print(INVALIDACCESS_MSG % MODELPATH)
         sys.exit(2)
     
     else:
-        print __appname__, __version__, "processing", MODELPATH
+        print(__appname__, __version__, "processing", MODELPATH)
         
         i = ii = iii = frg = 0
         x1 = y1 = z1 = a1 = c1 = g1 = i1 = x2 = y2 = z2 = x3 = y3 = z3 = 0.0
@@ -168,31 +166,31 @@ if __name__ == '__main__':
         StrLstCover = []
         StrListInfil = []
         
-        # STEP 1: Compile a list of locations (20x20LDU)
+        # STEP 1/5: Compile a list of locations (20x20LDU)
         # Tops and Bottoms that are hiding (=covering) details from next part
         # Save the list in StrListCover
         
         start_time = time.time()
         currentDT = datetime.datetime.now().strftime("%b %d, %Y %H:%M:%S")
-        print ""
-        print "Processing step 1. Current date and time: " + str(currentDT) + "."
+        print("")
+        print("Processing step 1/5. Current date and time: " + str(currentDT) + ".")
         imax = CHKLST_INFILE.__len__()
         for i in range(imax):
             ldline = CHKLST_INFILE[i]
             CHKLST_INTYPE[i] = 0
-            if ldLineType(ldline) <> 1: continue
+            if ldLineType(ldline) != 1: continue
             
             frg = int(ldExtractFromLine(ldline, 2))
             if (frg > 31) and (frg < 48): continue
             
-            if float(ldExtractFromLine(ldline, 7)) <> 0.0: continue
-            if float(ldExtractFromLine(ldline, 9)) <> 0.0: continue
-            if float(ldExtractFromLine(ldline, 10)) <> 1.0: continue
-            if float(ldExtractFromLine(ldline, 11)) <> 0.0: continue
-            if float(ldExtractFromLine(ldline, 13)) <> 0.0: continue
+            if float(ldExtractFromLine(ldline, 7)) != 0.0: continue
+            if float(ldExtractFromLine(ldline, 9)) != 0.0: continue
+            if float(ldExtractFromLine(ldline, 10)) != 1.0: continue
+            if float(ldExtractFromLine(ldline, 11)) != 0.0: continue
+            if float(ldExtractFromLine(ldline, 13)) != 0.0: continue
             
             fil = ldExtractFromLine(ldline, 15)
-            if len(fil)<5: continue # just to be foolproof...
+            if len(fil) < 5: continue # just to be foolproof...
             
             #  2010-03-20 also check if already boxed parts cover positions
             #  by removing B\, B\T, or B\B from examined file reference
@@ -210,9 +208,9 @@ if __name__ == '__main__':
             if VERBOSE == True:
                 elapsed_time = time.time() - start_time
                 currentDT = time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
-                print "  Step 1. Line " + str(i) + "/" + str(imax) + ". File \"" + fil + "\". Time " + str(currentDT) + "."
+                print("  Step 1/5. Line " + str(i) + "/" + str(imax) + ". File \"" + fil + "\". Time " + str(currentDT) + ".")
             
-            if len(fil)<5: continue # just to be foolproof...
+            if len(fil) < 5: continue # just to be foolproof...
             fil = fil[0:(len(fil)-4)]
             filnfo = os.path.join(LDRAWPATH, 'parts', 'b', fil + '.nfo')
             if not os.path.exists(filnfo): continue
@@ -233,7 +231,7 @@ if __name__ == '__main__':
                     f.close()
             except:
                 NFOCONTENT = []
-                print INVALIDACCESS_MSG % filnfo
+                print(INVALIDACCESS_MSG % filnfo)
             
             StrListInfil = []
             StrListInfil.extend(NFOCONTENT)
@@ -255,7 +253,7 @@ if __name__ == '__main__':
                 StrLstCover.append(s)
                 
         
-        #  END of STEP 1
+        #  END of STEP 1/5
         
         #  The model file in chklstInfile has been scanned for locations
         #  meeting all the given criterias
@@ -270,29 +268,29 @@ if __name__ == '__main__':
         #  B 240 -24 160
         
         
-        #  STEP 2 & 3: Determine which parts the top and/or bottom details can be removed from
+        #  STEP 2/5 & 3/5: Determine which parts the top and/or bottom details can be removed from
         
         for iiii in range(1, 3):
-            print "Processing step " + str(1+iiii) + ". Pass " + str(iiii) + "."
+            print("Processing step " + str(1+iiii) + "/5. Pass " + str(iiii) + ".")
             imax = CHKLST_INFILE.__len__()
             for i in range(imax):
                 ldline = CHKLST_INFILE[i]
-                if ldLineType(ldline) <> 1: continue
+                if ldLineType(ldline) != 1: continue
                 frg = int(ldExtractFromLine(ldline, 2))
                 if (frg > 31) and (frg < 48): continue
-                if float(ldExtractFromLine(ldline, 7)) <> 0.0: continue
-                if float(ldExtractFromLine(ldline, 9)) <> 0.0: continue
-                if float(ldExtractFromLine(ldline, 10)) <> 1.0: continue
-                if float(ldExtractFromLine(ldline, 11)) <> 0.0: continue
-                if float(ldExtractFromLine(ldline, 13)) <> 0.0: continue
+                if float(ldExtractFromLine(ldline, 7)) != 0.0: continue
+                if float(ldExtractFromLine(ldline, 9)) != 0.0: continue
+                if float(ldExtractFromLine(ldline, 10)) != 1.0: continue
+                if float(ldExtractFromLine(ldline, 11)) != 0.0: continue
+                if float(ldExtractFromLine(ldline, 13)) != 0.0: continue
                 
                 fil = ldExtractFromLine(ldline, 15)
                 if VERBOSE == True:
                     elapsed_time = time.time() - start_time
                     currentDT = time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
-                    print "  Step " + str(1+iiii) + ". Line " + str(i) + "/" + str(imax) + ". File \"" + fil + "\". Time " + str(currentDT) + "."
+                    print("  Step " + str(1+iiii) + "/5. Line " + str(i) + "/" + str(imax) + ". File \"" + fil + "\". Time " + str(currentDT) + ".")
                 
-                if len(fil)<5: continue
+                if len(fil) < 5: continue
                 fil = fil[0:(len(fil)-4)]
                 filnfo = os.path.join(LDRAWPATH, 'parts', 'b', fil + '.nfo')
                 if not os.path.exists(filnfo): continue
@@ -313,7 +311,7 @@ if __name__ == '__main__':
                         f.close()
                 except:
                     NFOCONTENT = []
-                    print INVALIDACCESS_MSG % filnfo
+                    print(INVALIDACCESS_MSG % filnfo)
                 
                 StrListInfil = []
                 StrListInfil.extend(NFOCONTENT)
@@ -357,11 +355,11 @@ if __name__ == '__main__':
                     else:
                         CHKLST_INTYPE[i] = 2
         
-        #  END of STEP 2 & 3
+        #  END of STEP 2/5 & 3/5
         
-        #  STEP 4: Generate output
+        #  STEP 4/5: Generate output
         
-        print "Processing step 4. Generating output."
+        print("Processing step 4/5. Generating output.")
         replacedCount1 = 0
         replacedCount2 = 0
         replacedCount3 = 0
@@ -371,7 +369,7 @@ if __name__ == '__main__':
         for i in range(imax):
             ldline = CHKLST_INFILE[i]
             ldtype = CHKLST_INTYPE[i]
-            if ldLineType(ldline) <> 1: continue
+            if ldLineType(ldline) != 1: continue
             partCountTotal += 1
             if ldtype == 0: continue
             elif ldtype == 1:
@@ -384,24 +382,24 @@ if __name__ == '__main__':
             newPrefix = STR_PREFIXES[ldtype]
             
             # Super verbose text for debugging.
-            #print ldline, ldtype, newPrefix
+            #print(ldline, ldtype, newPrefix)
             
             fil = newPrefix + ldExtractFromLine(ldline, 15)
             if VERBOSE == True:
                 elapsed_time = time.time() - start_time
                 currentDT = time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
-                print "  Step 4. Line " + str(i) + "/" + str(imax) + ". File \"" + fil + "\". Time " + str(currentDT) + "."
+                print("  Step 4/5. Line " + str(i) + "/" + str(imax) + ". File \"" + fil + "\". Time " + str(currentDT) + ".")
 
             fname = os.path.join(LDRAWPATH, 'Parts', fil)
             if not os.path.exists(fname): continue
             ldline = ldLineUpdate(ldline, 15, fil)
             CHKLST_INFILE[i] = ldline
         
-        #  END of STEP 4
+        #  END of STEP 4/5
         
-        #  STEP 5: Finalize and write output.
+        #  STEP 5/5: Finalize and write output.
         
-        print "Processing step 5. Finalizing and writing output."
+        print("Processing step 5/5. Finalizing and writing output.")
         
         elapsed_time = time.time() - start_time
         currentDT = time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
@@ -425,11 +423,11 @@ if __name__ == '__main__':
         CHKLST_INTYPE.append(0)
         CHKLST_INTYPE.append(0)
         CHKLST_INTYPE.append(0)
-        print "  " + endMessage1
-        print "  " + endMessage2
-        print "  " + endMessage3
-        print "  " + endMessage4
-        print "  " + endMessage5
+        print("  " + endMessage1)
+        print("  " + endMessage2)
+        print("  " + endMessage3)
+        print("  " + endMessage4)
+        print("  " + endMessage5)
         
         if replacedCountTotal > 0:
             try:
@@ -440,7 +438,7 @@ if __name__ == '__main__':
                     for line in CHKLST_INFILE:
                         f.write(line.strip('\r').strip('\n') + "\r\n")
                     f.close()
-            except Exception, ex:
-                print ex.message
+            except Exception as ex:
+                print(ex.message)
             else:
-                print "  Saved \"{0}\" in \"{1}\".".format(basename, parentpath)
+                print("  Saved \"{0}\" in \"{1}\".".format(basename, parentpath))
