@@ -11,7 +11,8 @@ Updated on 27 may 2021
        Note that this script is volatile! If your model already contains boxed parts, they will be deleted!
        If you add a third "-v" command-line option, the program will display more verbose output useful for debugging.
        I recommend using PyPy to run the script instead of CPython. The speed is much much improved!
-       I recommend not using this script on MPD or XMPD models for the time being until the script properly handles such file types.
+       I recommend not using this script on MPD or XMPD models for the time being, until the script properly handles such file types.
+       Unless you flatten/inline the MPD or XMPD files first, in which case it is okay but still not ideal.
 '''
 
 import os
