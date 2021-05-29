@@ -435,9 +435,10 @@ if __name__ == '__main__':
                 dirname = os.path.dirname(MODELPATH)
                 basename = "boxed_" + os.path.basename(MODELPATH)
                 parentpath = os.path.abspath(os.path.join(MODELPATH, os.pardir))
-                with open(os.path.join(dirname,basename), "wb") as f:
+                with open(os.path.join(dirname,basename), "w") as f:
                     for line in CHKLST_INFILE:
-                        f.write(line.strip('\r').strip('\n') + "\r\n")
+                        output = line.strip("\r").strip("\n") + "\r\n"
+                        f.write(output)
                     f.close()
             except Exception as ex:
                 print(ex.message)
