@@ -437,7 +437,7 @@ if __name__ == '__main__':
                 parentpath = os.path.abspath(os.path.join(MODELPATH, os.pardir))
                 with open(os.path.join(dirname,basename), "w") as f:
                     for line in CHKLST_INFILE:
-                        output = line.strip("\r").strip("\n") + "\r\n"
+                        output = line.strip("\n").strip("\r") + "\n"
                         f.write(output)
                     f.close()
             except Exception as ex:
