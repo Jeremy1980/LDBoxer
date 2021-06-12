@@ -18,7 +18,7 @@
 0 !HISTORY 2016-01-15 [cwdee] Qualify description
 0 !HISTORY 2016-12-31 [PTadmin] Official Update 2016-01
 
-0 BFC INVERTNEXT
+
 1 16 0 0 0 10 0 0 0 4 0 0 0 30 box4o4a.dat
 1 16 0 14 20 10 0 0 0 -1 -10 0 0 10 rect.dat
 1 16 0 14 -20 10 0 0 0 -1 10 0 0 10 rect.dat

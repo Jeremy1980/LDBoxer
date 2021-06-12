@@ -14,7 +14,6 @@
 0 !HISTORY 2007-07-01 [PTadmin] Header formatted for Contributor Agreement
 0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
 
-0 BFC INVERTNEXT
 1 16 0 4 0 80 0 0 0 -4 0 0 0 80 box.dat
 1 16 70 0 70 1 0 0 0 1 0 0 0 1 stud.dat
 1 16 50 0 70 1 0 0 0 1 0 0 0 1 stud.dat

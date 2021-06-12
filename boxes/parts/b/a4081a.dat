@@ -1,3 +1,4 @@
+0 BFC CERTIFY CCW
 0 ROTATION CENTER 0 0 0 1 "Custom" 
 0 ROTATION CONFIG 0 0
 2 24 10 8 10 10 8 -10
@@ -53,6 +54,7 @@
 2 24 -2 0 -12.398 -2 -1.0614 -12.609
 0 
 1 16 -2 2 -20 0 1 0 8 0 0 0 0 8 4-4disc.dat
+0 BFC INVERTNEXT
 1 16 2 2 -20 0 1 0 8 0 0 0 0 8 4-4disc.dat
 1 16 2 2 -20 0 -4 0 8 0 0 0 0 8 4-4cyli.dat
 0
