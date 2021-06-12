@@ -5,14 +5,14 @@ Updated on 27 may 2021
 @author: Jeremy Czajkowski
 @author: Michael Horvath
 @license: GNU General Public License version 3
-@version: 2018i
+@version: 2021b
 @note: A utility to help you replace LDraw parts with no visible studs or tubes with boxes. 
        Saves rendering time and CPU power.
-       Note that this script is volatile! If your model already contains boxed parts, they will be deleted!
+       Note that this script is volatile! If your model already contains boxed parts, references to them will be deleted!
        If you add a third "-v" command-line option, the program will display more verbose output useful for debugging.
-       I recommend using PyPy to run the script instead of CPython. The speed is much much improved!
-       I recommend not using this script on MPD or XMPD models for the time being, until the script properly handles such file types.
-       Unless you flatten/inline the MPD or XMPD files first, in which case it is okay but still not ideal.
+       I recommend using PyPy3.exe to run the script instead of CPython. The speed is much much improved!
+       I recommend not using this script on MPD or XMPD models for the time being, as the tool does not currently understand model hierarchy.
+       You will have better luck flattening/inlining the MPD or XMPD files using MPDCenter first.
 '''
 
 import os
@@ -22,7 +22,7 @@ import time
 from macpath import dirname
 
 __appname__ = "LDBoxer"
-__version__ = "2018i"
+__version__ = "2021b"
 
 NOTFOUND_MSG = "FileNotFoundError: [Errno 2] No such file or directory: '%s'"
 INVALIDACCESS_MSG = "ImportError: Invalid access to %s."
