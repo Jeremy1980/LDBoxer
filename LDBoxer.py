@@ -1,11 +1,11 @@
 '''
 Created on 16 mar 2017
-Updated on 27 may 2021
+Updated on 13 jun 2021
 @author: Tore Eriksson <tore.eson@gmail.com>
 @author: Jeremy Czajkowski
 @author: Michael Horvath
 @license: GNU General Public License version 3
-@version: 2021b
+@version: 2021c
 @note: A utility to help you replace LDraw parts with no visible studs or tubes with boxes. 
        Saves rendering time and CPU power.
        Note that this script is volatile! If your model already contains boxed parts, references to them will be deleted!
@@ -19,10 +19,10 @@ import os
 import sys
 import datetime
 import time
-from macpath import dirname
+import os.path
 
 __appname__ = "LDBoxer"
-__version__ = "2021b"
+__version__ = "2021c"
 
 NOTFOUND_MSG = "FileNotFoundError: [Errno 2] No such file or directory: '%s'"
 INVALIDACCESS_MSG = "ImportError: Invalid access to %s."
