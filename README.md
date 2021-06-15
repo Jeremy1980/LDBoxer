@@ -1,6 +1,6 @@
 # LDBoxer
 
-LDBoxer is a command-line utility originally designed by Tore Eriksson to help you replace LDraw parts that have no visible studs or tubes with simpler boxes. This saves rendering time and CPU power.
+LDBoxer is a Windows command-line utility originally developed by Tore Eriksson to help you replace LDraw parts that have no visible studs or tubes with simpler boxes. This saves rendering time and CPU resources.
 
 * Usage:  `LDBoxer_2018h.exe  ldraw_library_location  ldraw_model_location_for_conversion`
 * Usage example:  `LDBoxer_2018h.exe  "F:\LDRAW"  "F:\LDraw\models\car.dat"`
@@ -9,13 +9,15 @@ Alternately, if you have Python installed on your system, you can execute the Py
 
 * Usage example: `python3.exe  "E:\LDBoxer.py"  "F:\LDRAW"  "F:\LDraw\models\car.dat"`
 
-Better yet, if you have pypy installed, you can substitute it for CPython and gain a very nice speed boost.
+Better yet, if you have PyPy installed, you can substitute it for CPython and gain a very nice speed boost.
 
 * Usage example: `pypy3.exe  "E:\LDBoxer.py"  "F:\LDRAW"  "F:\LDraw\models\car.dat"`
 
 There is also an optional `-v` parameter which will print verbose information to the screen.
 
 * Usage example: `pypy3.exe  "E:\LDBoxer.py"  "F:\LDRAW"  "F:\LDraw\models\car.dat" -v`
+
+An example batch script is included.
 
 # Boxed Parts
 
