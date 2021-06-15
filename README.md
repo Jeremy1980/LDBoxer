@@ -23,11 +23,15 @@ There is also an optional `-v` parameter which will print verbose information to
 1. Boxed parts need to go in the "LDraw\parts\b" folder. Boxed sub-parts need to go in the "LDraw\parts\s\b" folder.
 1. Many "top" and "bottom" variants of boxed parts are missing, and still need to be created. Still, most of the most common parts have been modeled.
 1. The spreadsheet "boxes_checklist.xlsx" was at one point used to keep track of which parts had box variants. This file may be outdated though, as I did not refer to it during my last round of editing.
+1. Boxed parts starting with "b" are substituted when the bottom of the original part is obscured by other parts.
+1. Boxed parts starting with "t" are substituted when the top of the original part is obscured by other parts.
+1. Boxed parts starting with "a" are substituted when both the top and the bottom of the original part are obscured by other parts.
 
 # To Do
 
 1. Some boxed parts may still have incorrect or missing back face culling (BFC) information. (I think I fixed all this recently.)
 1. Some boxed parts may be missing edge and conditional lines and need to be corrected.
+1. Not all boxed parts have "b", "t" and "a" variants.
 1. Need to create LGEO equivalents of all the boxed parts. However, I'm not sure how LDBoxer's sub-folder structure will behave in this context. We'll see.
 1. Need to start adhering more closely (or at all) to [official parts header specifications](https://www.ldraw.org/article/398.html).
 1. LDBoxer currently does not correctly process SNOT parts. Limited handling of SNOT parts should be possible in the future, however, if parts sharing the same SNOT orientation are all placed in the same sub-model.

@@ -1,11 +1,11 @@
 '''
 Created on 16 mar 2017
-Updated on 13 jun 2021
+Updated on 15 jun 2021
 @author: Tore Eriksson <tore.eson@gmail.com>
 @author: Jeremy Czajkowski
 @author: Michael Horvath
 @license: GNU General Public License version 3
-@version: 2021c
+@version: 2021d
 @note: A utility to help you replace LDraw parts with no visible studs or tubes with boxes. 
        Saves rendering time and CPU power.
        Note that this script is volatile! If your model already contains boxed parts, references to them will be deleted!
@@ -22,7 +22,7 @@ import time
 import os.path
 
 __appname__ = "LDBoxer"
-__version__ = "2021c"
+__version__ = "2021d"
 
 NOTFOUND_MSG = "FileNotFoundError: [Errno 2] No such file or directory: '%s'"
 INVALIDACCESS_MSG = "ImportError: Invalid access to %s."
@@ -347,7 +347,8 @@ if __name__ == '__main__':
                             SkipThis = False
                             break
                     if SkipThis == True: break
-                if SkipThis == True: continue
+                if SkipThis == True:
+                    continue
                 if iiii == 1:
                     CHKLST_INTYPE[i] = 1
                 elif iiii == 2:
@@ -364,37 +365,49 @@ if __name__ == '__main__':
         replacedCount1 = 0
         replacedCount2 = 0
         replacedCount3 = 0
-        replacedCountTotal = 0
+        skippedCount1 = 0
+        skippedCount2 = 0
+        skippedCount3 = 0
         partCountTotal = 0
         imax = CHKLST_INFILE.__len__()
         for i in range(imax):
             ldline = CHKLST_INFILE[i]
             ldtype = CHKLST_INTYPE[i]
-            if ldLineType(ldline) != 1: continue
+            if ldLineType(ldline) != 1:
+                continue
             partCountTotal += 1
-            if ldtype == 0: continue
-            elif ldtype == 1:
-                replacedCount1 += 1
-            elif ldtype == 2:
-                replacedCount2 += 1
-            elif ldtype == 3:
-                replacedCount3 += 1
-            replacedCountTotal += 1
+            if ldtype == 0:
+                continue
             newPrefix = STR_PREFIXES[ldtype]
             
             # Super verbose text for debugging.
             #print(ldline, ldtype, newPrefix)
             
             fil = newPrefix + ldExtractFromLine(ldline, 15)
+            fname = os.path.join(LDRAWPATH, 'Parts', fil)
+
             if VERBOSE == True:
                 elapsed_time = time.time() - start_time
                 currentDT = time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
                 print("  Step 4/5. Line " + str(i) + "/" + str(imax) + ". File \"" + fil + "\". Time " + str(currentDT) + ".")
 
-            fname = os.path.join(LDRAWPATH, 'Parts', fil)
-            if not os.path.exists(fname): continue
-            ldline = ldLineUpdate(ldline, 15, fil)
-            CHKLST_INFILE[i] = ldline
+            if not os.path.exists(fname):
+                print("  Not found and ignoring: " + fname)
+                if ldtype == 1:
+                    skippedCount1 += 1
+                elif ldtype == 2:
+                    skippedCount2 += 1
+                elif ldtype == 3:
+                    skippedCount3 += 1
+            else:
+                if ldtype == 1:
+                    replacedCount1 += 1
+                elif ldtype == 2:
+                    replacedCount2 += 1
+                elif ldtype == 3:
+                    replacedCount3 += 1
+                ldline = ldLineUpdate(ldline, 15, fil)
+                CHKLST_INFILE[i] = ldline
         
         #  END of STEP 4/5
         
@@ -404,19 +417,27 @@ if __name__ == '__main__':
         
         elapsed_time = time.time() - start_time
         currentDT = time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
+        replacedCountTotal = replacedCount1 + replacedCount2 + replacedCount3
+        skippedCountTotal = skippedCount1 + skippedCount2 + skippedCount3
         boxPercent = round(float(replacedCountTotal)/float(partCountTotal) * 100, 1)
-        
-        endMessage1 = "Boxed {0} parts ({1}).".format(replacedCount1, STR_PREFIXES[1])
-        endMessage2 = "Boxed {0} parts ({1}).".format(replacedCount2, STR_PREFIXES[2])
-        endMessage3 = "Boxed {0} parts ({1}).".format(replacedCount3, STR_PREFIXES[3])
-        endMessage4 = "Boxed Total {0}/{1} ({2}%) parts by {3} v{4}.".format(replacedCountTotal, partCountTotal, boxPercent, __appname__, __version__)
-        endMessage5 = "Elapsed time: " + str(currentDT) + "."
+
+        endMessage1 = "Not found {0} boxed parts ({1}).".format(skippedCount1, STR_PREFIXES[1])
+        endMessage2 = "Not found {0} boxed parts ({1}).".format(skippedCount2, STR_PREFIXES[2])
+        endMessage3 = "Not found {0} boxed parts ({1}).".format(skippedCount3, STR_PREFIXES[3])
+        endMessage4 = "Found {0} boxed parts ({1}).".format(replacedCount1, STR_PREFIXES[1])
+        endMessage5 = "Found {0} boxed parts ({1}).".format(replacedCount2, STR_PREFIXES[2])
+        endMessage6 = "Found {0} boxed parts ({1}).".format(replacedCount3, STR_PREFIXES[3])
+        endMessage7 = "Boxed Total {0}/{1} ({2}%) parts by {3} v{4}.".format(replacedCountTotal, partCountTotal, boxPercent, __appname__, __version__)
+        endMessage8 = "Elapsed time: " + str(currentDT) + "."
 
         CHKLST_INFILE.append("0 // " + endMessage1)
         CHKLST_INFILE.append("0 // " + endMessage2)
         CHKLST_INFILE.append("0 // " + endMessage3)
         CHKLST_INFILE.append("0 // " + endMessage4)
         CHKLST_INFILE.append("0 // " + endMessage5)
+        CHKLST_INFILE.append("0 // " + endMessage6)
+        CHKLST_INFILE.append("0 // " + endMessage7)
+        CHKLST_INFILE.append("0 // " + endMessage8)
         CHKLST_INFILE.append("0")
         CHKLST_INTYPE.append(0)
         CHKLST_INTYPE.append(0)
@@ -429,6 +450,9 @@ if __name__ == '__main__':
         print("  " + endMessage3)
         print("  " + endMessage4)
         print("  " + endMessage5)
+        print("  " + endMessage6)
+        print("  " + endMessage7)
+        print("  " + endMessage8)
         
         if replacedCountTotal > 0:
             try:
