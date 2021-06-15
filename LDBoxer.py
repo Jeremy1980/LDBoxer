@@ -392,7 +392,7 @@ if __name__ == '__main__':
                 print("  Step 4/5. Line " + str(i) + "/" + str(imax) + ". File \"" + fil + "\". Time " + str(currentDT) + ".")
 
             if not os.path.exists(fname):
-                print("  Not found and ignoring: " + fname)
+                print("  Not found and ignoring file \"" + fname + "\".")
                 if ldtype == 1:
                     skippedCount1 += 1
                 elif ldtype == 2:
